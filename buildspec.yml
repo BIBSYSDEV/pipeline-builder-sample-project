@@ -1,8 +1,9 @@
 version: 0.2
 
 phases:
-  finally:
-    - echo 'No build'
+  build:
+    commands:
+      - "echo 'No build' "
 
 
 
