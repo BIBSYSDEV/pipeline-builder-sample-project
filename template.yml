@@ -1,1 +1,11 @@
-yello
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'EC2 templace'
+
+Resources:
+  SmallServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: eu-west-1a
+      ImageId: ami-08660f1c6fb6b01e7
+      InstanceType: t2.micro
+
