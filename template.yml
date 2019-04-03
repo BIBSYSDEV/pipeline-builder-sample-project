@@ -1,6 +1,23 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'EC2 templace'
 
+
+Parameters:
+  ProjectId:
+    Type: String
+  Stage:
+    Type: String
+    Description: Deployment stage. E.g. test, prod, etc.
+  Branch:
+    Type: String
+  CodeBucket:
+    Type: String
+  InitFunctionName:
+    Type: String
+  DestroyFunctionName:
+    Type:  String
+
+
 Resources:
   SmallServer:
     Type: AWS::EC2::Instance
