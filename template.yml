@@ -2,26 +2,26 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'EC2 templace'
 
 
-#Parameters:
-#  ProjectId:
-#    Type: String
-#    Default: hello
-#  Stage:
-#    Type: String
-#    Description: Deployment stage. E.g. test, prod, etc.
-#    Default: hello
-#  Branch:
-#    Type: String
-#    Default: hello
-#  CodeBucket:
-#    Type: String
-#    Default: hello
-#  InitFunctionName:
-#    Type: String
-#    Default: hello
-#  DestroyFunctionName:
-#    Type:  String
-#    Default: hello
+Parameters:
+  ProjectId:
+    Type: String
+    Default: hello
+  Stage:
+    Type: String
+    Description: Deployment stage. E.g. test, prod, etc.
+    Default: hello
+  Branch:
+    Type: String
+    Default: hello
+  CodeBucket:
+    Type: String
+    Default: hello
+  InitFunctionName:
+    Type: String
+    Default: hello
+  DestroyFunctionName:
+    Type:  String
+    Default: hello
 
 
 Resources:
