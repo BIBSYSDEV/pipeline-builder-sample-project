@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '4.0.2'
+}
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+    implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
+    implementation 'no.bibsys.aws:aws-build-tools:1.4.5'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = "5.3.1"
+}
+
+
+shadowJar {
+    archiveName = "${baseName}-fat.jar"
+}
+jar.enabled = false
