@@ -1,6 +1,13 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade awscli
+
+  build:
+      ./gradlew clean build
   post_build:
     commands:
       - echo Build started on `date`
