@@ -40,7 +40,7 @@ Resources:
       Handler: handlers.SimplePipelineLambdaFunction::handleRequest
       FunctionName: !Ref InitFunctionName
       Runtime: java8
-      CodeUri: build/libs/pipeline-example.jar
+      CodeUri: build/libs/pipeline-example-fat.jar
       Policies:
         Version: '2012-10-17'
         Statement:
@@ -63,7 +63,7 @@ Resources:
       Handler: handlers.SimplePipelineLambdaFunction::handleRequest
       FunctionName: !Ref DestroyFunctionName
       Runtime: java8
-      CodeUri: build/libs/pipeline-example.jar
+      CodeUri: build/libs/pipeline-example-fat.jar
       Policies:
         Version: '2012-10-17'
         Statement:
