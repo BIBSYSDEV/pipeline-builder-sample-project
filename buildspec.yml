@@ -7,7 +7,8 @@ phases:
       - pip install --upgrade awscli
 
   build:
-      ./gradlew clean build
+    commands:
+      - ./gradlew clean build
   post_build:
     commands:
       - echo Build started on `date`
