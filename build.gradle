@@ -26,3 +26,4 @@ wrapper {
 shadowJar {
     archiveName = "${baseName}-fat.jar"
 }
+jar.enabled = false

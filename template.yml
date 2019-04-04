@@ -6,23 +6,17 @@ Description: 'EC2 templace'
 Parameters:
   ProjectId:
     Type: String
-    Default: hello
   Stage:
     Type: String
     Description: Deployment stage. E.g. test, prod, etc.
-    Default: hello
   Branch:
     Type: String
-    Default: hello
   CodeBucket:
     Type: String
-    Default: hello
   InitFunctionName:
     Type: String
-    Default: hello
   DestroyFunctionName:
     Type:  String
-    Default: hello
 
 
 Resources:
@@ -31,7 +25,6 @@ Resources:
     Properties:
       ImageId: ami-08660f1c6fb6b01e7
       InstanceType: t2.micro
-      KeyName: orestis-key
 
 
   Init:
