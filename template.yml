@@ -57,13 +57,11 @@ Resources:
   Destroy:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: myHandler
+      Handler: index.myHandler
       InlineCode: >
-        var assert = require('assert');
+        ZipFile: |
         var AWS = require('aws-sdk');
-        var http = require('http');
-
-        exports.myHandler = function(event, context) {
+       exports.myHandler = function(event, context) {
 
             var codepipeline = new AWS.CodePipeline();
                 // Retrieve the Job ID from the Lambda action
