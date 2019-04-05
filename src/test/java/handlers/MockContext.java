@@ -7,34 +7,37 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import java.util.Arrays;
 
 public class MockContext implements Context {
+
+    public static final int MOCK_VALUE = 0;
+
     @Override
     public String getAwsRequestId() {
-        return null;
+        return "mockCallgetAwsRequestId";
     }
 
     @Override
     public String getLogGroupName() {
-        return null;
+        return "mockCallgetLogGroupName";
     }
 
     @Override
     public String getLogStreamName() {
-        return null;
+        return "mockCallgetLogStreamName";
     }
 
     @Override
     public String getFunctionName() {
-        return null;
+        return "mockCallgetFunctionName";
     }
 
     @Override
     public String getFunctionVersion() {
-        return null;
+        return "mockCallGetFunctionVersion";
     }
 
     @Override
     public String getInvokedFunctionArn() {
-        return null;
+        return "mockCallgetInvokedFunctionArn";
     }
 
     @Override
@@ -49,12 +52,12 @@ public class MockContext implements Context {
 
     @Override
     public int getRemainingTimeInMillis() {
-        return 0;
+        return MOCK_VALUE;
     }
 
     @Override
     public int getMemoryLimitInMB() {
-        return 0;
+        return MOCK_VALUE;
     }
 
     @Override
