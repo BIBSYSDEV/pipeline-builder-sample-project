@@ -61,7 +61,7 @@ Resources:
       InlineCode: >
         ZipFile: |
         var AWS = require('aws-sdk');
-       exports.myHandler = function(event, context) {
+        exports.myHandler = function(event, context) {
 
             var codepipeline = new AWS.CodePipeline();
                 // Retrieve the Job ID from the Lambda action
