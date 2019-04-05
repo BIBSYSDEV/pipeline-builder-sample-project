@@ -59,7 +59,6 @@ Resources:
     Properties:
       Handler: index.myHandler
       InlineCode: >
-        ZipFile: |
         var AWS = require('aws-sdk');
         exports.myHandler = function(event, context) {
 
