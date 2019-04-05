@@ -78,11 +78,7 @@ Resources:
                     }
                 });
             };
-
-
             putJobSuccess('Lambda function success');
-            // Validate the URL passed in UserParameters
-
         };
 
       FunctionName:  !Ref InitFunctionName
