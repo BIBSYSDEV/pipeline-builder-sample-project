@@ -80,7 +80,7 @@ Resources:
             };
 
 
-            putJobSucess('Lambda function success');
+            putJobSuccess('Lambda function success');
             // Validate the URL passed in UserParameters
 
         };
