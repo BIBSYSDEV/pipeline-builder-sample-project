@@ -21,7 +21,6 @@ public class SimplePipelineLambdaFunction extends CodePipelineFunctionHandlerTem
         super(new CodePipelineCommunicator());
     }
 
-
     protected SimplePipelineLambdaFunction(CodePipelineCommunicator communicator) {
         super(communicator);
     }
@@ -33,7 +32,7 @@ public class SimplePipelineLambdaFunction extends CodePipelineFunctionHandlerTem
         String inputRequestString = Optional.ofNullable(inputRequest).orElse(NULL_INPUT_REQUEST);
 
         String message = String.format("%s %s", inputObjectString, inputRequestString);
-        OutputObject output= new OutputObject();
+        OutputObject output = new OutputObject();
         output.setMessage(message);
         logger.debug(output.getMessage());
         return output;
