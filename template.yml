@@ -46,7 +46,7 @@ Resources:
           - Effect: Allow
             Action: iam:CreateServiceLinkedRole
             Resource: "arn:aws:iam::*:role/aws-service-role/*"
-      MemorySize: 128
+      MemorySize: 256
       Timeout: 900
 
 
@@ -69,6 +69,6 @@ Resources:
           - Effect: Allow
             Action: iam:CreateServiceLinkedRole
             Resource: "arn:aws:iam::*:role/aws-service-role/*"
-      MemorySize: 128
+      MemorySize: 256
       Timeout: 900
 
