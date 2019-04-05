@@ -3,7 +3,7 @@ package handlers;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OutputObject {
+public class SampleOutputObject {
 
     private String id;
     private String message;

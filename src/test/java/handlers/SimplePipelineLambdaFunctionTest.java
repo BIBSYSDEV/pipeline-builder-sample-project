@@ -36,7 +36,7 @@ class SimplePipelineLambdaFunctionTest {
         CodePipelineEvent event = new CodePipelineEvent(ID);
         String eventString = JsonUtils.newJsonParser().writeValueAsString(event);
 
-        OutputObject output = function.processInput(event, eventString, null);
+        SampleOutputObject output = function.processInput(event, eventString, null);
         assertThat(output.getMessage(), containsString(eventString));
         assertThat(output.getMessage(), containsString(event.toString()));
     }
@@ -46,7 +46,7 @@ class SimplePipelineLambdaFunctionTest {
         String pipelineEvent = IoUtils.resourceAsString(Paths.get(RESOURCE_FOLDER, REAL_PIPELINE_EVENT));
 
         CodePipelineEvent event = (CodePipelineEvent) DeployEventBuilder.create(pipelineEvent);
-        OutputObject output = function.processInput(event, pipelineEvent, null);
+        SampleOutputObject output = function.processInput(event, pipelineEvent, null);
         assertThat(output.getMessage(), containsString(pipelineEvent));
         assertThat(output.getMessage(), containsString(event.toString()));
     }
