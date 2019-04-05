@@ -87,9 +87,9 @@ Resources:
             // Validate the URL passed in UserParameters
 
         };
+
       FunctionName: !Ref DestroyFunctionName
-      Runtime: java8
-      CodeUri: build/libs/pipeline-example-fat.jar
+      Runtime: nodejs8.10
       Policies:
         Version: '2012-10-17'
         Statement:
