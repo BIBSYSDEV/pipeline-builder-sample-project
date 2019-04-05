@@ -35,7 +35,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: handlers.SimplePipelineLambdaFunction::handleRequest
-      FunctionName: !Ref InitFunctionName
+      FunctionName: !Ref DestroyFunctionName
       Runtime: java8
       CodeUri: build/libs/pipeline-example-fat.jar
       Policies:
@@ -86,7 +86,7 @@ Resources:
 
         };
 
-      FunctionName: !Ref DestroyFunctionName
+      FunctionName:  !Ref InitFunctionName
       Runtime: nodejs8.10
       Policies:
         Version: '2012-10-17'
