@@ -26,48 +26,42 @@ class SimplePipelineLambdaFunctionTest {
     private SimplePipelineLambdaFunction function;
 
     @BeforeEach
-    public void init(){
-        CodePipelineCommunicator communicator= Mockito.mock(CodePipelineCommunicator.class);
-         function = new SimplePipelineLambdaFunction(communicator);
-
+    public void init() {
+        CodePipelineCommunicator communicator = Mockito.mock(CodePipelineCommunicator.class);
+        function = new SimplePipelineLambdaFunction(communicator);
     }
 
     @Test
     public void processInputShouldReturnTheEventAndTheInputString() throws JsonProcessingException {
-        CodePipelineEvent event= new CodePipelineEvent(ID);
-        String eventString= JsonUtils.newJsonParser().writeValueAsString(event);
+        CodePipelineEvent event = new CodePipelineEvent(ID);
+        String eventString = JsonUtils.newJsonParser().writeValueAsString(event);
 
-        OutputObject output = function.processInput(event,eventString,null);
-        assertThat(output.getMessage(),containsString(eventString));
-        assertThat(output.getMessage(),containsString(event.toString()));
+        OutputObject output = function.processInput(event, eventString, null);
+        assertThat(output.getMessage(), containsString(eventString));
+        assertThat(output.getMessage(), containsString(event.toString()));
     }
-
 
     @Test
     public void processInputShouldProcessAnAwsPipelineEvent() throws IOException {
-        String pipelineEvent= IoUtils.resourceAsString(Paths.get(RESOURCE_FOLDER, REAL_PIPELINE_EVENT));
+        String pipelineEvent = IoUtils.resourceAsString(Paths.get(RESOURCE_FOLDER, REAL_PIPELINE_EVENT));
 
-        CodePipelineEvent event= (CodePipelineEvent) DeployEventBuilder.create(pipelineEvent);
-        OutputObject output = function.processInput(event,pipelineEvent,null);
-        assertThat(output.getMessage(),containsString(pipelineEvent));
-        assertThat(output.getMessage(),containsString(event.toString()));
+        CodePipelineEvent event = (CodePipelineEvent) DeployEventBuilder.create(pipelineEvent);
+        OutputObject output = function.processInput(event, pipelineEvent, null);
+        assertThat(output.getMessage(), containsString(pipelineEvent));
+        assertThat(output.getMessage(), containsString(event.toString()));
     }
-
 
     @Test
     public void processInputShouldReturnValidOutputtoHandleRequest() throws IOException {
-        String pipelineEvent= IoUtils.resourceAsString(Paths.get(RESOURCE_FOLDER, REAL_PIPELINE_EVENT));
-        String resourceId= "aaaaaaaa-aaaa-aaaa-1234-123456789012";
-        ByteArrayInputStream inputStream=new ByteArrayInputStream(pipelineEvent.getBytes(StandardCharsets.UTF_8));
+        String pipelineEvent = IoUtils.resourceAsString(Paths.get(RESOURCE_FOLDER, REAL_PIPELINE_EVENT));
+        String resourceId = "aaaaaaaa-aaaa-aaaa-1234-123456789012";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(pipelineEvent.getBytes(StandardCharsets.UTF_8));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        function.handleRequest(inputStream, outputStream,new MockContext());
+        function.handleRequest(inputStream, outputStream, new MockContext());
 
         byte[] bytes = outputStream.toByteArray();
-        String outputString= new String(bytes);
-        assertThat(outputString,containsString(resourceId));
-
+        String outputString = new String(bytes);
+        assertThat(outputString, containsString(resourceId));
     }
-
-
 }
