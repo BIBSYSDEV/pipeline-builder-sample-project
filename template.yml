@@ -57,7 +57,36 @@ Resources:
   Destroy:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: handlers.SimplePipelineLambdaFunction::handleRequest
+      Handler: myHandler
+      InlineCode: >
+        var assert = require('assert');
+        var AWS = require('aws-sdk');
+        var http = require('http');
+
+        exports.myHandler = function(event, context) {
+
+            var codepipeline = new AWS.CodePipeline();
+                // Retrieve the Job ID from the Lambda action
+            var jobId = event["CodePipeline.job"].id;
+
+            var putJobSuccess = function(message) {
+                var params = {
+                    jobId: jobId
+                };
+                codepipeline.putJobSuccessResult(params, function(err, data) {
+                    if(err) {
+                        context.fail(err);
+                    } else {
+                        context.succeed(message);
+                    }
+                });
+            };
+
+
+            putJobSucess('Lambda function success');
+            // Validate the URL passed in UserParameters
+
+        };
       FunctionName: !Ref DestroyFunctionName
       Runtime: java8
       CodeUri: build/libs/pipeline-example-fat.jar
