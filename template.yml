@@ -6,18 +6,22 @@ Description: 'EC2 templace'
 Parameters:
   ProjectId:
     Type: String
+    Description: Automatically generated ProjectId based on repository and branch
   Stage:
     Type: String
-    Description: Deployment stage. E.g. test, prod, etc.
+    Description: Deployment stage. Either TEST or FINAL
   Branch:
     Type: String
+    Description: The Git branch
   CodeBucket:
     Type: String
+    Description: Automatically generated bucket where the code is stored
   InitFunctionName:
     Type: String
+    Description: Automatically generated name for the initialization function
   DestroyFunctionName:
     Type:  String
-
+    Description: Automatically generated name for the destroy function
 
 Resources:
   SmallServer:
@@ -27,11 +31,11 @@ Resources:
       InstanceType: t2.micro
 
 
-  Init:
+  Destroy:
     Type: AWS::Serverless::Function
     Properties:
       Handler: handlers.SimplePipelineLambdaFunction::handleRequest
-      FunctionName: !Ref InitFunctionName
+      FunctionName: !Ref DestroyFunctionName
       Runtime: java8
       CodeUri: build/libs/pipeline-example-fat.jar
       Policies:
@@ -50,13 +54,35 @@ Resources:
       Timeout: 900
 
 
-  Destroy:
+  Init:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: handlers.SimplePipelineLambdaFunction::handleRequest
-      FunctionName: !Ref DestroyFunctionName
-      Runtime: java8
-      CodeUri: build/libs/pipeline-example-fat.jar
+      Handler: index.myHandler
+      InlineCode: >
+        var AWS = require('aws-sdk');
+        exports.myHandler = function(event, context) {
+
+            var codepipeline = new AWS.CodePipeline();
+                // Retrieve the Job ID from the Lambda action
+            var jobId = event["CodePipeline.job"].id;
+
+            var putJobSuccess = function(message) {
+                var params = {
+                    jobId: jobId
+                };
+                codepipeline.putJobSuccessResult(params, function(err, data) {
+                    if(err) {
+                        context.fail(err);
+                    } else {
+                        context.succeed(message);
+                    }
+                });
+            };
+            putJobSuccess('Lambda function success');
+        };
+
+      FunctionName:  !Ref InitFunctionName
+      Runtime: nodejs8.10
       Policies:
         Version: '2012-10-17'
         Statement:
