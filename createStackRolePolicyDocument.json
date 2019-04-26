@@ -9,8 +9,10 @@
         "iam:CreateRole",
         "iam:DeleteRolePolicy",
         "iam:DetachRolePolicy",
-        "ec2:TerminateInstances"
-
+        "ec2:TerminateInstances",
+        "ec2:DescribeInstances",
+        "iam:DeleteRole",
+        "iam:PutRolePolicy"
       ],
       "Resource": "*",
       "Effect": "Allow"
