@@ -17,6 +17,3 @@ phases:
 artifacts:
   files:
     - template-export.yml
-
-
-
