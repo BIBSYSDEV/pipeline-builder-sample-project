@@ -6,7 +6,10 @@
         "ssm:GetParameters",
         "cloudformation:CreateChangeSet",
         "ec2:RunInstances",
-        "iam:CreateRole"
+        "iam:CreateRole",
+        "iam:DeleteRolePolicy",
+        "iam:DetachRolePolicy",
+        "ec2:TerminateInstances"
 
       ],
       "Resource": "*",
