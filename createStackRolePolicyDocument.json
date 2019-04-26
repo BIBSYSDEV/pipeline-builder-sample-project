@@ -3,7 +3,9 @@
   "Statement": [
     {
       "Action": [
-        "ssm:GetParameters"
+        "ssm:GetParameters",
+        "cloudformation:CreateChangeSet"
+
       ],
       "Resource": "*",
       "Effect": "Allow"
