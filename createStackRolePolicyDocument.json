@@ -4,7 +4,9 @@
     {
       "Action": [
         "ssm:GetParameters",
-        "cloudformation:CreateChangeSet"
+        "cloudformation:CreateChangeSet",
+        "ec2:RunInstances",
+        "iam:CreateRole"
 
       ],
       "Resource": "*",
