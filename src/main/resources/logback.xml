@@ -13,7 +13,7 @@
 
 		<createLogGroup>true</createLogGroup>
 		<queueLength>100</queueLength>
-		<groupName>/${baseName}</groupName>
+		<groupName>/pipeline-example-${baseName}</groupName>
 		<streamName>log-stream</streamName>  
 		<dateFormat>yyyyMMdd_HHmm</dateFormat>
 
