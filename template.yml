@@ -45,6 +45,7 @@ Resources:
               - lambda:InvokeFunction
               - codepipeline:PutJobFailureResult
               - codepipeline:PutJobSuccessResult
+              - ec2:RunInstances
             Effect: Allow
             Resource: "*"
           - Effect: Allow
